@@ -1,0 +1,10 @@
+langchain_community 
+beautifulsoup4
+html2text
+python-dotenv
+google-generativeai
+langchain-google-genai
+langchain
+faiss-cpu
+tiktoken
+gradio
