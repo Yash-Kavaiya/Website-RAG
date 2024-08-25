@@ -96,4 +96,4 @@ with gr.Blocks(css=css) as demo:
     gr.HTML("</div>")
 
 if __name__ == "__main__":
-    demo.launch(share=True)
+    demo.launch(share=True,server_port=8080,server_name='0.0.0.0')
