@@ -4,4 +4,4 @@ COPY . .
 RUN pip install -r requirements.txt
 WORKDIR /app
 ENV GRADIO_SERVER_NAME="0.0.0.0"
-ENTRYPOINT [“python”, “main.py”]
+ENTRYPOINT ["python", "main.py"]
