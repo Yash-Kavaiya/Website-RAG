@@ -41,6 +41,7 @@ splits = text_splitter.split_documents(docs)
 embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 vectorstore = FAISS.from_documents(documents=splits, 
                                     embedding=embeddings)
+vectorstore.save_local("./Vector_DB/faiss_index")
 retriever = vectorstore.as_retriever()
 prompt = hub.pull("rlm/rag-prompt")
 
