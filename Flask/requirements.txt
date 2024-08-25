@@ -1,0 +1,13 @@
+langchain_community 
+beautifulsoup4
+html2text
+python-dotenv
+google-generativeai
+langchain-google-genai
+langchain
+faiss-cpu
+tiktoken
+gradio
+Flask==3.0.3
+gunicorn==22.0.0
+Werkzeug==3.0.3

@@ -4,7 +4,6 @@ This project implements a Retrieval-Augmented Generation (RAG) system using Lang
 
 ## Features
 
-- Web-based chatbot interface using Gradio
 - RAG system powered by Langchain and Google's Generative AI
 - Local FAISS vector store for efficient information retrieval
 - Customizable UI with CSS styling
