@@ -2,110 +2,191 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Websites RAG Chatbot </title>
+    <title>Websites RAG Chatbot</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #005a9e, #0078d4);
+            --secondary-gradient: linear-gradient(135deg, #38a0ff, #72c4ff);
+            --background-color: #f3f2f1;
+            --text-color: #323130;
+            --light-text: #605e5c;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --button-hover: #004578;
+            --button-shadow: rgba(0, 90, 158, 0.3);
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+            background: var(--primary-gradient);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
         }
 
         .container {
-            max-width: 600px;
-            width: 100%;
+            max-width: 800px;
+            width: 95%;
             height: 90vh;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            border-radius: 20px;
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            animation: fadeInUp 0.5s ease-out;
         }
 
         .header {
-            background-color: #0078d4;
-            color: white;
+            background: var(--secondary-gradient);
+            color: var(--white);
+            padding: 25px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        .header h1 {
+            margin: 0 0 15px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .header p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0.9;
         }
 
         .chat-container {
             flex-grow: 1;
-            padding: 15px;
+            padding: 25px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
+            background: var(--background-color);
         }
 
         .chat-bubble {
             max-width: 80%;
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            border-radius: 20px;
+            font-size: 15px;
+            line-height: 1.5;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            animation: fadeInUp 0.3s ease-out;
         }
 
         .user-message {
-            background-color: #0078d4;
-            color: white;
+            background: var(--primary-gradient);
+            color: var(--white);
             align-self: flex-end;
+            border-bottom-right-radius: 5px;
         }
 
         .bot-response {
-            background-color: #f0f0f0;
-            color: black;
+            background: var(--secondary-gradient);
+            color: var(--text-color);
             align-self: flex-start;
+            border-bottom-left-radius: 5px;
         }
 
         .input-container {
             display: flex;
-            border-top: 1px solid #e0e0e0;
-            background-color: white;
+            padding: 20px;
+            background-color: var(--white);
+            border-top: 1px solid rgba(0,0,0,0.1);
         }
 
         .input-field {
             flex-grow: 1;
-            padding: 10px;
+            padding: 15px 20px;
             border: none;
+            border-radius: 30px;
             outline: none;
-            font-size: 16px;
+            font-size: 15px;
+            background-color: var(--background-color);
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .input-field:focus {
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .send-button {
-            background-color: #0078d4;
-            color: white;
+            background: var(--primary-gradient);
+            color: var(--white);
             border: none;
-            padding: 10px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin-left: 15px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px var(--button-shadow);
+        }
+
+        .send-button:hover {
+            background: var(--button-hover);
         }
 
         .footer {
-            background-color: #0078d4;
-            color: white;
+            background: var(--primary-gradient);
+            color: var(--white);
             text-align: center;
-            padding: 10px;
+            padding: 15px;
             font-size: 14px;
         }
 
         .footer a {
-            color: white;
+            color: var(--white);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
         .footer a:hover {
+            opacity: 0.8;
             text-decoration: underline;
         }
 
         @media (max-width: 600px) {
-            .input-field, .send-button {
-                font-size: 14px;
+            .container {
+                height: 100vh;
+                border-radius: 0;
             }
+            .header h1 { font-size: 24px; }
+            .header p { font-size: 14px; }
+            .chat-bubble { font-size: 14px; }
+            .input-field, .send-button { font-size: 14px; }
         }
     </style>
 </head>
@@ -120,11 +201,11 @@
         <div class="chat-container" id="chat-container"></div>
         <div class="input-container">
             <input type="text" id="user-input" class="input-field" placeholder="Type your message here..." />
-            <button id="send-button" class="send-button">Send</button>
+            <button id="send-button" class="send-button">➤</button>
         </div>
         <div class="footer">
             Created by Yash Kavaiya - feel free to contact me!<br>
-            GitHub: <a href="https://github.com/Yash-Kavaiya" target="_blank">https://github.com/Yash-Kavaiya</a><br>
+            GitHub: <a href="https://github.com/Yash-Kavaiya" target="_blank">https://github.com/Yash-Kavaiya</a> | 
             LinkedIn: <a href="https://linkedin.com/in/Yash-Kavaiya" target="_blank">https://linkedin.com/in/Yash-Kavaiya</a>
         </div>
     </div>
